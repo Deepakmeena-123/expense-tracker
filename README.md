@@ -42,3 +42,7 @@ App is deployed on Render.
 
 ## Fixes
 - Fixed API URL for deployment
+
+
+## Final
+Application deployed successfully on Vercel and Render.
