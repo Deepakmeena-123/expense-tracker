@@ -34,3 +34,7 @@ I also kept the styling intentionally simple and self-contained so the assignmen
 
 ## Deployment
 App is deployed on Render.
+
+## Features Added
+- Filter by category
+- Sort by date
