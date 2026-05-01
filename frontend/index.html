@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5efe6;
+      --panel: rgba(255, 255, 255, 0.8);
+      --ink: #1e1b16;
+      --muted: #6d6258;
+      --line: rgba(30, 27, 22, 0.12);
+      --accent: #2d6cdf;
+      --accent-strong: #1f4fb0;
+      --danger: #b42318;
+      --shadow: 0 22px 60px rgba(30, 27, 22, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(45, 108, 223, 0.16), transparent 30%),
+        radial-gradient(circle at top right, rgba(210, 140, 32, 0.14), transparent 24%),
+        linear-gradient(180deg, #fbf7f1 0%, var(--bg) 100%);
+      min-height: 100vh;
+      padding: 32px;
+    }
+
+    .shell {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      flex-wrap: wrap;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -0.04em;
+    }
+
+    .lede {
+      max-width: 58ch;
+      color: var(--muted);
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      font-size: 0.96rem;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    button {
+      font: inherit;
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--ink);
+    }
+
+    input:focus,
+    select:focus,
+    button:focus {
+      outline: 3px solid rgba(45, 108, 223, 0.18);
+      outline-offset: 2px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 140ms ease, background-color 140ms ease, opacity 140ms ease;
+    }
+
+    button:hover {
+      background: var(--accent-strong);
+      transform: translateY(-1px);
+    }
+
+    button:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .secondary {
+      background: rgba(30, 27, 22, 0.09);
+      color: var(--ink);
+    }
+
+    .secondary:hover {
+      background: rgba(30, 27, 22, 0.14);
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .status {
+      min-height: 1.4em;
+      margin-top: 6px;
+      color: var(--muted);
+    }
+
+    .status.error {
+      color: var(--danger);
+    }
+
+    .summary {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: baseline;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .summary .total {
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 14px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .empty {
+      padding: 24px 0 8px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 860px) {
+      body {
+        padding: 18px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <h1>Expense Tracker</h1>
+        <p class="lede">Record expenses, filter them by category, and keep a running total of the currently visible list.</p>
+      </div>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Add Expense</h2>
+        <p class="status" id="formStatus" aria-live="polite"></p>
+
+        <form id="expenseForm">
+          <label>
+            Amount
+            <input id="amount" name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required />
+          </label>
+
+          <label>
+            Category
+            <input id="category" name="category" type="text" placeholder="Food, Travel, Bills" required />
+          </label>
+
+          <label>
+            Description
+            <input id="description" name="description" type="text" placeholder="Lunch at restaurant, Bus ticket" required />
+          </label>
+
+          <label>
+            Date
+            <input id="date" name="date" type="date" required />
+          </label>
+
+          <div class="actions">
+            <button id="submitButton" type="submit">Add Expense</button>
+            <button class="secondary" type="button" id="resetFiltersButton">Reset View</button>
+          </div>
+        </form>
+      </article>
+
+      <article class="card">
+        <div class="summary">
+          <h2>Expenses</h2>
+          <div class="total" id="total">Total: ₹0.00</div>
+        </div>
+
+        <div class="toolbar">
+          <label>
+            Filter by category
+            <select id="filter">
+              <option value="">All categories</option>
+            </select>
+          </label>
+
+          <label>
+            Sort
+            <select id="sort">
+              <option value="date_desc">Newest first</option>
+              <option value="">Original order</option>
+            </select>
+          </label>
+        </div>
+
+        <p class="status" id="listStatus" aria-live="polite"></p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody id="list"></tbody>
+          </table>
+        </div>
+
+        <div class="empty" id="emptyState" hidden>No expenses match the current view.</div>
+      </article>
+    </section>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

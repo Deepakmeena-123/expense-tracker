@@ -1,0 +1,74 @@
+[
+  {
+    "id": "54771a35-5273-4b55-bedf-cfa016a81159",
+    "amountCents": 12345,
+    "category": "Food",
+    "description": "Lunch",
+    "date": "2026-05-01",
+    "createdAt": "2026-05-01T16:04:46.725Z",
+    "fingerprint": "2068037cb657b5bf9e1537fc829de7947009c19d069a486e9f1b4fd5d4c3acbd"
+  },
+  {
+    "id": "bff2394d-c868-4feb-beda-b85ab59e1d91",
+    "amountCents": 1000,
+    "category": "food",
+    "description": "breakfast",
+    "date": "2026-05-01",
+    "createdAt": "2026-05-01T16:08:49.068Z",
+    "fingerprint": "e5aead159bd4c01ce871b6bcf52144aa61e15b6ef856aea170b808ca1a0ef5fe"
+  },
+  {
+    "id": "54719866-4fa6-4ea2-9065-b3f6766a797a",
+    "amountCents": 4000,
+    "category": "sports",
+    "description": "cricket ball",
+    "date": "2026-04-30",
+    "createdAt": "2026-05-01T16:09:59.033Z",
+    "fingerprint": "f25337e178f61c3838d478c5c140f54b82e27983ba0c1f542eedce7a8ba9e85b"
+  },
+  {
+    "id": "0bc10c02-d2a5-4a1d-aea4-6246937a995d",
+    "amountCents": 5000,
+    "category": "travel",
+    "description": "kota",
+    "date": "2026-05-02",
+    "createdAt": "2026-05-01T16:10:43.854Z",
+    "fingerprint": "fbfc03282124c5b464a61bb4401b1803dd9077737ca03466e0743b11d3b3558e"
+  },
+  {
+    "id": "07d2e47f-699c-4ccb-9b24-9265314ea227",
+    "amount": "50.99",
+    "category": "food",
+    "description": "Burger",
+    "date": "2026-05-01",
+    "createdAt": "2026-05-01T16:42:09.647Z",
+    "fingerprint": "983545456e8240bdec4383cc466d7ac718c6117778e37d1b24289086c5e48831"
+  },
+  {
+    "id": "7da38d71-9009-4800-8948-38ab19a52bd2",
+    "amount": "25.50",
+    "category": "food",
+    "description": "Coffee",
+    "date": "2026-05-01",
+    "createdAt": "2026-05-01T16:42:09.733Z",
+    "fingerprint": "787834848c80b6126524ec688b41beb5ad15bbbc92ef5b9a7c87754f04067504"
+  },
+  {
+    "id": "14bc22e4-069a-449c-ab0f-bdf6a8f8b99b",
+    "amount": "100.00",
+    "category": "travel",
+    "description": "Taxi",
+    "date": "2026-05-02",
+    "createdAt": "2026-05-01T16:42:09.738Z",
+    "fingerprint": "7409c53c5bb116c9d3805ebaf292b7bd127cecbfb56f03a11970308a8b17ba24"
+  },
+  {
+    "id": "8641032b-3389-400b-8320-710478802009",
+    "amount": "50.00",
+    "category": "food",
+    "description": "dinner",
+    "date": "2026-05-01",
+    "createdAt": "2026-05-01T16:44:42.478Z",
+    "fingerprint": "968fc817a63c54411a56aa5c5f6b0c8b6aefadd7d6d9d25deffc1e382be96cb3"
+  }
+]
