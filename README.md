@@ -38,3 +38,7 @@ App is deployed on Render.
 ## Features Added
 - Filter by category
 - Sort by date
+
+
+## Fixes
+- Fixed API URL for deployment
