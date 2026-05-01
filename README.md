@@ -28,3 +28,6 @@ It also includes basic loading and error states, and the submit button is disabl
 I did not add authentication, editing, deletion, or a database migration layer. The focus here was on correctness, retry safety, and a small amount of persistence with minimal setup.
 
 I also kept the styling intentionally simple and self-contained so the assignment is easy to run without a frontend build tool.
+
+## Deployment
+App is deployed on Render.
