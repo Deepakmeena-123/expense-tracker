@@ -17,6 +17,9 @@ Money is stored as a decimal string in the API and as integer paise internally s
 
 To handle retries and accidental duplicate submits, `POST /expenses` computes a fingerprint from the normalized expense payload plus an optional `Idempotency-Key` header. Repeating the same request returns the existing record instead of creating a duplicate.
 
+## Backend Setup
+Implemented Express server with POST and GET endpoints.
+
 ## Frontend Notes
 
 The UI supports adding expenses, filtering by category, sorting by newest first, and showing the total of the currently visible rows.
